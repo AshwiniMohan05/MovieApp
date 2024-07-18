@@ -133,9 +133,9 @@ MovieApp makes HTTP requests to the above TMDb API endpoints to fetch and displa
 
 ### Unit test
 
-    To run the unit test cases
-```bash
-npm test
-```
+1. **Run Test Cases**:
+    ```bash
+    npm test
+    ```
 
 
