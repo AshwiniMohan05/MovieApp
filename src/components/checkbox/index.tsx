@@ -1,15 +1,30 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 
-export default function CheckBox () {
-  // Create a custom checkbox component
-  
-  return (
-    <CheckboxCont>
-    </CheckboxCont>
-  )
+interface CheckboxProps {
+  label: string;
 }
 
-const CheckboxCont = styled.div`
-  position: relative;
-`
+const Checkbox: React.FC<CheckboxProps> = ({ label }) => {
+  return (
+    <CheckboxContainer>
+      <StyledCheckbox type="checkbox" />
+      <Label>{label}</Label>
+    </CheckboxContainer>
+  );
+}
+
+export default Checkbox;
+
+const CheckboxContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledCheckbox = styled.input`
+  margin-right: 10px;
+`;
+
+const Label = styled.label`
+  font-size: 1em;
+`;

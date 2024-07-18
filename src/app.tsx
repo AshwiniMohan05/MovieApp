@@ -25,7 +25,7 @@ export default function App(props: any) {
 
 
 const ContentWrapper = styled.main`
-  padding-left: 280px;
+  // padding-left: 280px;
 `
 
 const PageContainer = styled.main`

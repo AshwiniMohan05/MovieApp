@@ -1,44 +1,62 @@
 import React from "react";
-import styled, { css } from 'styled-components';
-
+import styled from 'styled-components';
 import * as colors from "../../colors";
-import ExpandableFilters from "../expandablefilters";
 import SearchBar from "../searchbar";
+import ExpandableFilters from "../expandablefilters";
 
-// Add types for the props of 'SearchFilters' and the styled component 'SearchFiltersCont'
-type SearchFiltersProps = {
-  // genres, ratings, languages, searchMovies
+interface SearchFiltersProps {
+  genres: Array<{ id: number | string; name: string }>;
+  ratings: Array<{ id: number | string; name: string }>;
+  languages: Array<{ id: number | string; name: string }>;
+  searchMovies: (keyword: string, year?: number) => void;
 }
 
-export default function SearchFilters({}: SearchFiltersProps) {
+export default function SearchFilters({ genres, ratings, languages, searchMovies }: SearchFiltersProps) {
   return (
     <FiltersWrapper>
-      <SearchFiltersCont className="search_inputs_cont" marginBottom>
-        {/* Implement a SearchBar component and use it for both the keyword and the year inputs */}
+      <SearchFiltersCont className="search_inputs_cont">
+        <SearchBar searchMovies={searchMovies} />
       </SearchFiltersCont>
       <SearchFiltersCont>
-        <CategoryTitle>Movies</CategoryTitle>
-        {/* Implement a component called "ExpandableFilters" and use it for the filter categories */}
+        <CategoryTitle>Movie</CategoryTitle>
+        <ExpandableFilters title="Select genre(s)" options={genres} defaultExpanded />
+        <ExpandableFilters title="Select min. vote" options={ratings} />
+        <ExpandableFilters title="Select language" options={languages} />
       </SearchFiltersCont>
     </FiltersWrapper>
-  )
+  );
 }
 
 const FiltersWrapper = styled.div`
-  position: relative;
-`
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    .search_inputs_cont {
+      display: block;
+      background-color: unset;
+    }
+  }
+`;
 
 const SearchFiltersCont = styled.div`
-  background-color: white;
-  padding: 20px;
+  background-color: ${colors.white};
   border-radius: 3px;
   transition: all .3s ease-in-out;
-  
-  ${props => props.marginBottom && css`
-    margin-bottom: 15px;
-  `}
-`
+  padding: 20px;
+  margin-bottom: 15px;
+
+  @media (max-width: 768px) {
+    padding: 0;
+    margin-top: 20px;
+    &:not(.search_inputs_cont) {
+      display: none;
+    }
+  }
+`;
 
 const CategoryTitle = styled.div`
-
-`
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+`;

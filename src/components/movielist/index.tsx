@@ -1,22 +1,28 @@
 import React from "react";
 import styled from 'styled-components';
-
 import MovieItem from '../movieitem';
 
-// Add types for the props of 'MovieList'
 type MovieListProps = {
-  // movies, genres
+  movies: Array<any>;
+  genres: Array<Genre>;
 }
 
+type Genre = {
+  id: number;
+  name: string;
+};
 
-export default function MovieList({}: MovieListProps) {
+export default function MovieList({ movies, genres }: MovieListProps) {
   return (
     <MoviesWrapper>
-      {/* Finish the MovieItem component and use it here to display the movie results */}
+      {movies.map(movie => (
+        <MovieItem key={movie.id} movie={movie} genres={genres} />
+      ))}
     </MoviesWrapper>
-  )
+  );
 }
 
 const MoviesWrapper = styled.div`
   position: relative;
-`
+  flex: 1;
+`;
