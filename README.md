@@ -11,7 +11,8 @@ This app displays a list of movies based on the filters provided and the search 
   - [Installation](#installation)
   - [Usage](#usage)
   - [API Key Setup](#api-key-setup)
-  - [Using the API in MovieApp](#api-key-setup)
+  - [Using the API in MovieApp](#usage-api)
+  - [Unit Test](#unit-test)
 
 
 ## Features
@@ -129,5 +130,12 @@ All API requests are made to the TMDb API base URL:
 ### Using the API in MovieApp
 
 MovieApp makes HTTP requests to the above TMDb API endpoints to fetch and display movie data. To interact with these endpoints, you need to provide your TMDb API key, which should be stored in a `.env` file in the root directory of your project. I have just added the varibale names. I can send the keys directly to the contact person due to security reasons.
+
+### Unit test
+
+    To run the unit test cases
+```bash
+npm test
+```
 
 
