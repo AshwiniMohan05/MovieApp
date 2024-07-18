@@ -126,29 +126,6 @@ All API requests are made to the TMDb API base URL:
      }
      ```
 
-3. **Get Genres**
-
-   - **Endpoint**: `/genre/movie/list`
-   - **Method**: `GET`
-   - **Description**: Fetches a list of all movie genres.
-   - **Parameters**:
-     - `api_key` (required): Your API key from TMDb.
-   - **Example Request**:
-     ```
-     GET https://api.themoviedb.org/3/genre/movie/list?api_key=YOUR_API_KEY
-     ```
-   - **Response**:
-     ```json
-     {
-       "genres": [
-         { "id": 28, "name": "Action" },
-         { "id": 12, "name": "Adventure" },
-         { "id": 16, "name": "Animation" }
-         // More genres...
-       ]
-     }
-     ```
-
 ### Using the API in MovieApp
 
 MovieApp makes HTTP requests to the above TMDb API endpoints to fetch and display movie data. To interact with these endpoints, you need to provide your TMDb API key, which should be stored in a `.env` file in the root directory of your project. I have just added the varibale names. I can send the keys directly to the contact person due to security reasons.
